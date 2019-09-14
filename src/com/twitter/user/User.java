@@ -11,9 +11,8 @@ import java.util.Objects;
 public class User {
 
     private String username;
-    private long id;
     private HashMap<Integer, User> followers;
-    private HashMap<Integer, User> following;
+    private HashMap<Integer, User> following = new HashMap<>();
     // add an array of tweets per user??
 
     public String getUsername() {
@@ -24,28 +23,20 @@ public class User {
         this.username = username;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public HashMap<Integer, User> getFollowers() {
         return followers;
     }
 
-    public void setFollowers(HashMap<Integer, User> followers) {
-        this.followers = followers;
+    public void setFollowers(User user) {
+        this.followers.put(user.hashCode(), user);
     }
 
     public HashMap<Integer, User> getFollowing() {
         return following;
     }
 
-    public void setFollowing(HashMap<Integer, User> following) {
-        this.following = following;
+    public void setFollowing(User user) {
+        this.following.put(user.hashCode(),user);
     }
 
     @Override
@@ -53,13 +44,14 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(username, user.username) &&
-                Objects.equals(id, user.id);
+        return Objects.equals(getUsername(), user.getUsername()) &&
+                Objects.equals(getFollowers(), user.getFollowers()) &&
+                Objects.equals(getFollowing(), user.getFollowing());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(username, id);
+        return Objects.hash(getUsername(), getFollowers(), getFollowing());
     }
 }
