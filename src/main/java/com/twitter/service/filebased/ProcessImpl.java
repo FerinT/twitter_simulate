@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class ProcessImpl implements Process {
 
-    private final String UTILSPATH = "src/com/twitter/utils/";
+    private final String UTILSPATH = "src/main/resources/";
     private HashMap<String, User> users = new HashMap<>();
 
     @Override
