@@ -1,12 +1,14 @@
 package com.twitter;
 
-import com.twitter.service.file.ProcessImpl;
+import com.twitter.service.filebased.ProcessImpl;
 
 public class Main {
 
     public static void main(String[] args) {
         ProcessImpl process = new ProcessImpl();
 
-        process.loadUser();
+        process.loadUsers();
+        process.displayFeed();
+
     }
 }
