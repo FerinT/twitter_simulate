@@ -52,15 +52,15 @@ public class ProcessImpl implements Process {
     public void displayFeed(){
         users.forEach((username,user) -> {
             System.out.println(username);
-            for(Tweet tweet: user.getTweets()){
-                System.out.println("    @" + username + " " + tweet.getTweet());
-            }
             user.getFollowing().forEach((key, value) -> {
                 for(Tweet tweet: value.getTweets()){
                     System.out.println("    @" + key + " " + tweet.getTweet());
                 }
 
             });
+            for(Tweet tweet: user.getTweets()){
+                System.out.println("    @" + username + " " + tweet.getTweet());
+            }
         });
     }
 
